@@ -9,7 +9,7 @@ var _app = function () {
     this.shouldIgnoreVideo = false;
     this.effects = ["bounce", "flash", "pulse", "rubberBand", "shake", "swing", "tada", "wobble", "jello"];
     this.brandDescription = [
-        "amateur web devoloper"
+        "web devoloper"
     ];
 
 this.titleChanger = function (text, delay) {

@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 html {
-	cursor:url("../others/cursor.png"), default;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -111,16 +110,6 @@ pre {
 	z-index: -3;
 }
 
-#pattern {
-	background: transparent url("../others/dot.png") repeat 0 0;
-	top: 0;
-	left: 0;
-	margin: 0;
-	padding: 0;
-	z-index: -1;
-	opacity: 1;;
-}
-
 #pattern, #background {
 	position: absolute;
 	width: 100%;
@@ -151,13 +140,8 @@ pre {
 	bottom: 0;
 	right: 5px;
 }
-
-.trollface-light {
-	-webkit-filter: invert(100%);
-	-moz-filter: invert(100%);
-	-ms-filter: invert(100%);
-}
-
-::-webkit-scrollbar {
-	width: 0;
+.interaction{
+	position: fixed;
+	top: 45%;
+	left: 45%;
 }

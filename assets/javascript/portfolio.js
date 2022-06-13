@@ -17,14 +17,27 @@
             },
                 
             {
-                name: 'youtube',
-                link: 'https://www.youtube.com/channel/UCO1Z6F7deidtaHeEmHrCHxw'
+                name: 'spotify',
+                link: 'https://open.spotify.com/user/f1riiuky07wkrjpk18uq89qk2'
             },
 
             {
                 name: 'mail',
-                link: 'mailto:vandy.one'
+                link: 'mailto:vandy@vandy.one'
             },
+            {
+                name: 'youtube',
+                link: 'https://www.youtube.com/channel/UCO1Z6F7deidtaHeEmHrCHxw'
+            
+            },
+            {
+                name: 'steam',
+                link: 'https://steamcommunity.com/id/vandanlol/'
+            },
+            {
+                name: 'github',
+                link: 'https://github.com/vandy404'
+            }
         ];
          
         for (var i in links) {
@@ -42,13 +55,13 @@
             app.shouldIgnoreVideo = true;
         } 
 
-        app.titleChanger();
-        app.iconChanger([
-            "assets/icons/roses/rose.jpg",
-            "assets/icons/roses/rose1.jpg",
-            "assets/icons/roses/rose2.jpg",
-            "assets/icons/roses/rose3.jpg",
-        ]);
+        // app.titleChanger();
+        // app.iconChanger([
+        //     "assets/icons/roses/rose.jpg",
+        //     "assets/icons/roses/rose1.jpg",
+        //     "assets/icons/roses/rose2.jpg",
+        //     "assets/icons/roses/rose3.jpg",
+        // ]);
     });
 
     if ($.cookie('videoTime')) {
@@ -56,11 +69,27 @@
         app.audioElement.currentTime = $.cookie('videoTime');
     }
 
-    document.addEventListener('contextmenu', function (event) { 
-        event.preventDefault() 
-    });
+    $("body").on("contextmenu", function (e)  
+    {  
+       return false;  
+    });  
 
-
+    $(document).keydown(function (event) {
+        // Prevent F12 -
+        if (event.keyCode == 123) {
+           return false;
+        }
+        // Prevent Ctrl+a = disable select all
+        // Prevent Ctrl+u = disable view page source
+        // Prevent Ctrl+s = disable save
+        if (event.ctrlKey && (event.keyCode === 85 || event.keyCode === 83 || event.keyCode ===65 )) {
+           return false;
+        }
+        else if (event.ctrlKey && event.shiftKey && event.keyCode === 73)
+        {
+           return false;
+        }
+        });
 
     document.body.onkeyup = function (e) {
         if (e.keyCode == 32 && app.skippedIntro)
@@ -80,7 +109,7 @@
         }
     }
 
-    $(".skip").click(function () {
+    $(".interaction").click(function () {
         skipIntro();
     });
 
@@ -108,52 +137,52 @@
         }, timeout);
     };
 
-    (function () {
-        $.getJSON('https://freegeoip.app/json/', function (data) {
+    // (function () {
+    //     $.getJSON('https://freegeoip.app/json/', function (data) {
 
-            writeLine(["<span style='font-size: 14px; color: #00aff2;'>Welcome</span>...", "Granting access to <span style='font-size: 14px; color: #06d;'>[vandy.one]</span>..."], 30, function () {
+    //         writeLine(["<span style='font-size: 14px; color: #00aff2;'>Welcome</span>...", "Granting access to <span style='font-size: 14px; color: #06d;'>[vandy.one]</span>..."], 30, function () {
 
-                if (app.skippedIntro)
-                	return;
+    //             if (app.skippedIntro)
+    //             	return;
 
-                clearCursor();
+    //             clearCursor();
 
-                var usernames = ["user", "dude"];
+    //             var usernames = ["user", "dude"];
 
-                writeLine(["Access granted! <span style='font-size: 14px; color: #0f0;'>[success]</span>", "Welcome back, <i style='color: #0f0'>" +  ((data.ip) ? data.ip : usernames[Math.floor(Math.random()*usernames.length)]) 
-                    + "</i>! By the way, nice to see someone from " + ((data.country_name) ? data.country_name : 'your country') + " here!"], 30, 500, function () {
+    //             writeLine(["Access granted! <span style='font-size: 14px; color: #0f0;'>[success]</span>", "Welcome back, <i style='color: #0f0'>" +  ((data.ip) ? data.ip : usernames[Math.floor(Math.random()*usernames.length)]) 
+    //                 + "</i>! By the way, nice to see someone from " + ((data.country_name) ? data.country_name : 'your country') + " here!"], 30, 500, function () {
 
-                    if (app.skippedIntro)
-                        return;
+    //                 if (app.skippedIntro)
+    //                     return;
 
-                    clearCursor();
+    //                 clearCursor();
 
-                    writeLine(["<i style='color: #FF0000'>vandy.one</i>"], 120, 500, function () {
+    //                 writeLine(["<i style='color: #FF0000'>vandy.one</i>"], 120, 500, function () {
 
-                        timeouts.push(setTimeout(function () {
+    //                     timeouts.push(setTimeout(function () {
 
-                            if (app.skippedIntro)
-                                return;
+    //                         if (app.skippedIntro)
+    //                             return;
 
-                            clearCursor();
+    //                         clearCursor();
 
-                            setTimeout(function () {
+    //                         setTimeout(function () {
 
-                                skipIntro();
+    //                             skipIntro();
 
-                            }, 500);
+    //                         }, 500);
 
-                        }, 1000));
+    //                     }, 1000));
 
-                    });
+    //                 });
 
-                });
+    //             });
 
-            });
+    //         });
 
-        });
+    //     });
 
-    })()
+    // })()
 
     var skipIntro = function () {
 
